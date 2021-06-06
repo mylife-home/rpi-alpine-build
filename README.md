@@ -5,6 +5,7 @@ MyLife Home alpine build on raspberry pi
 
 - docker rpi emulation
   - https://hub.docker.com/r/rycus86/armhf-alpine-qemu
+  - aarch64: https://superuser.com/questions/1397991/running-alpine-linux-on-qemu-arm-guests
   - docker pi for raspbian: https://github.com/lukechilds/dockerpi
   - custom qemu raspbian kernel: https://github.com/dhruvvyas90/qemu-rpi-kernel
   - alpine qemu arm: https://superuser.com/questions/1397991/running-alpine-linux-on-qemu-arm-guests
