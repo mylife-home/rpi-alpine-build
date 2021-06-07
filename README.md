@@ -15,3 +15,8 @@ MyLife Home alpine build on raspberry pi
   - https://wiki.gentoo.org/wiki/OpenRC/supervise-daemon#Services_which_won.27t_run_under_a_supervisor
   - https://github.com/OpenRC/openrc/blob/master/supervise-daemon-guide.md
 - nrpe ?
+
+## TODO
+
+- recupérer la version du package.json du core/modules ?
+- produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
