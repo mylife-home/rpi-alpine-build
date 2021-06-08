@@ -6,7 +6,7 @@
 
 export ALPINE_VERSION=3.13.5
 
-docker run --rm --privileged multiarch/qemu-user-static --reset -persistent  yes --credential yes
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credential yes
 
 #################################
 # aarch64
