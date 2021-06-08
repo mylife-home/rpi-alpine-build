@@ -1,43 +1,35 @@
 #!/bin/sh
 
-# setup user + abuild
+# setup abuild
 
-apk add --no-cache sudo git alpine-sdk
+apk add --no-cache sudo git alpine-sdk nodejs
 
-adduser -D builder
-echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-addgroup builder abuild
 mkdir -p /var/cache/distfiles
 chmod a+w /var/cache/distfiles
 
-home=/home/builder
+mkdir -p ~/.ssh
+cp -r /mnt/build-secrets/ssh-keys/* ~/.ssh/
+chmod 700 ~/.ssh
 
-sudo -i -u builder /bin/sh - << eof
-
-mkdir -p $home/.ssh
-cp -r /mnt/build-secrets/ssh-keys/* $home/.ssh/
-chmod 700 $home/.ssh
-
-mkdir -p $home/.abuild
-cp /mnt/build-secrets/abuild/* $home/.abuild
-
-eof
+mkdir -p ~/.abuild
+cp /mnt/build-secrets/abuild/* ~/.abuild
 
 # build core
 
-sudo -i -u builder /bin/sh - << eof
-
-mkdir $home/build
-mkdir $home/packages
-cd $home/build
+mkdir ~/build
+mkdir ~/packages
+cd ~/build
 cp -r /mnt/build/packages/mylife-home-core/* .
-mkdir dist
-cp -r /mnt/dist/prod/core/* ./dist
+cp -r /mnt/dist/prod/core/bin.js ./
+cp -r /mnt/dist/prod/core/bin.js.map ./
+cp -r /mnt/dist/prod/core/lib.js ./
+cp -r /mnt/dist/prod/core/lib.js.map ./
 
-eof
+abuild -F checksum
+abuild -F -r
 
 #####
+
 
 /bin/sh
 
