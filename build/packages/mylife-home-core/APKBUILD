@@ -1,0 +1,33 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="MyLife Home Core"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="nodejs"
+source="dist config.json store.json mylife-home-core.initd"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+}
+
+package() {
+  install -dm755 "$pkgdir/opt/mylife-home"
+  install -dm755 "$pkgdir/opt/mylife-home/plugins"
+
+  install -m755 -D "$srcdir"/mylife-home-core.initd "$pkgdir"/etc/init.d/mylife-home-core
+
+  cp -pr "$srcdir/dist/bin.js" "$pkgdir/opt/mylife-home/bin.js"
+  cp -pr "$srcdir/dist/bin.js.map" "$pkgdir/opt/mylife-home/bin.js.map"
+  cp -pr "$srcdir/dist/lib.js" "$pkgdir/opt/mylife-home/lib.js"
+  cp -pr "$srcdir/dist/lib.js.map" "$pkgdir/opt/mylife-home/lib.js.map"
+
+  cp -pr "$srcdir/config.json" "$pkgdir/opt/mylife-home/config.json"
+  cp -pr "$srcdir/store.json" "$pkgdir/opt/mylife-home/store.json"
+}

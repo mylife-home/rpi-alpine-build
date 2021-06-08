@@ -24,7 +24,20 @@ cp /mnt/build-secrets/abuild/* $home/.abuild
 
 eof
 
-#######
+# build core
+
+sudo -i -u builder /bin/sh - << eof
+
+mkdir $home/build
+mkdir $home/packages
+cd $home/build
+cp -r /mnt/build/packages/mylife-home-core/* .
+mkdir dist
+cp -r /mnt/dist/prod/core/* ./dist
+
+eof
+
+#####
 
 /bin/sh
 

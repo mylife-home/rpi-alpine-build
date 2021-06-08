@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+
+name=mylife-home-core
+
+depend() {
+  need net
+  after firewall
+}
+
+start() {
+
+  ebegin "Starting mylife-home-core"
+  start-stop-daemon --start --quiet \
+    --user mylife-home-core:mylife-home-core \
+    --pidfile "${INSPIRCD_PID_FILE}" \
+    --exec /usr/bin/$name \
+    -- --config="${INSPIRCD_CONFIG_FILE}" "${INSPIRCD_OPTS}"
+  eend $? "Failed to start mylife-home-core"
+}
+
+stop() {
+
+  ebegin "Stopping mylife-home-core"
+  start-stop-daemon --stop --quiet \
+    --pidfile "${INSPIRCD_PID_FILE}"
+  eend $? "Failed to stop mylife-home-core"
+}
