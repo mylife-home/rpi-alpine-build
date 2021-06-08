@@ -21,11 +21,11 @@ package() {
 
   install -m755 -D "$srcdir"/mylife-home-core.initd "$pkgdir"/etc/init.d/mylife-home-core
 
-  cp -pr "$srcdir/bin.js" "$pkgdir/usr/mylife-home/bin.js"
-  cp -pr "$srcdir/bin.js.map" "$pkgdir/usr/mylife-home/bin.js.map"
-  cp -pr "$srcdir/lib.js" "$pkgdir/usr/mylife-home/lib.js"
-  cp -pr "$srcdir/lib.js.map" "$pkgdir/usr/mylife-home/lib.js.map"
+  cp -p "$srcdir/bin.js" "$pkgdir/usr/mylife-home/bin.js"
+  cp -p "$srcdir/bin.js.map" "$pkgdir/usr/mylife-home/bin.js.map"
+  cp -p "$srcdir/lib.js" "$pkgdir/usr/mylife-home/lib.js"
+  cp -p "$srcdir/lib.js.map" "$pkgdir/usr/mylife-home/lib.js.map"
 
-  cp -pr "$srcdir/config.json" "$pkgdir/usr/mylife-home/config.json"
-  cp -pr "$srcdir/store.json" "$pkgdir/usr/mylife-home/store.json"
+  cp -p "$srcdir/config.json" "$pkgdir/usr/mylife-home/config.json"
+  cp -p "$srcdir/store.json" "$pkgdir/usr/mylife-home/store.json"
 }

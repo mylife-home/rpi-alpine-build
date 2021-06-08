@@ -1,5 +1,8 @@
 #!/bin/sh
 
+host_uid=$1
+host_gid=$2
+
 # setup abuild
 
 apk add --no-cache sudo git alpine-sdk nodejs
@@ -14,25 +17,30 @@ chmod 700 ~/.ssh
 mkdir -p ~/.abuild
 cp /mnt/build-secrets/abuild/* ~/.abuild
 
+mkdir -p ~/packages
+ln -s /mnt/build ~/packages/build
+mkdir ~/build # this folder will serve as output subdirectory
+
 # build core
 
-mkdir ~/build
-mkdir ~/packages
-cd ~/build
-cp -r /mnt/build/packages/mylife-home-core/* .
-cp -r /mnt/dist/prod/core/bin.js ./
-cp -r /mnt/dist/prod/core/bin.js.map ./
-cp -r /mnt/dist/prod/core/lib.js ./
-cp -r /mnt/dist/prod/core/lib.js.map ./
+mkdir ~/build/mylife-home-core
+cd ~/build/mylife-home-core
+cp -r /mnt/packages/mylife-home-core/* .
+cp /mnt/dist/prod/core/bin.js ./
+cp /mnt/dist/prod/core/bin.js.map ./
+cp /mnt/dist/prod/core/lib.js ./
+cp /mnt/dist/prod/core/lib.js.map ./
 
 abuild -F checksum
 abuild -F -r
 
-#####
+cd ~
 
+# cleanup
+
+echo $host_uid:$host_gid
+chown -R $host_uid:$host_gid /mnt/build/*
+
+# debug
 
 /bin/sh
-
-
-# su - builder
-# mkdir -p ~/packages
