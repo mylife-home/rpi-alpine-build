@@ -38,7 +38,6 @@ cd ~
 
 # cleanup
 
-echo $host_uid:$host_gid
 chown -R $host_uid:$host_gid /mnt/build/*
 
 # debug
