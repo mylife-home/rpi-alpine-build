@@ -16,4 +16,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 export ALPINE_IMAGE_PLATFORM=arm64v8
 export DOCKER_PLATFORM=arm64
 
-docker run --platform linux/$DOCKER_PLATFORM --rm -ti -v $(realpath ./build):/build -v $(realpath ../mylife-home-studio-data-dev/build-secrets):/build-secrets $ALPINE_IMAGE_PLATFORM/alpine:$ALPINE_VERSION /build/container-build.sh
+SECRETS_PATH=../mylife-home-studio-data-dev/build-secrets
+DIST_PATH=../mylife-home-main/packages/mylife-home-packager/dist
+
+docker run --platform linux/$DOCKER_PLATFORM --rm -ti -v $(realpath ./build):/mnt/build -v $(realpath $SECRETS_PATH):/mnt/build-secrets -v $(realpath $DIST_PATH):/mnt/dist $ALPINE_IMAGE_PLATFORM/alpine:$ALPINE_VERSION /mnt/build/container-build.sh

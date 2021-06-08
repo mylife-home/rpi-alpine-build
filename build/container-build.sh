@@ -16,11 +16,11 @@ home=/home/builder
 sudo -i -u builder /bin/sh - << eof
 
 mkdir -p $home/.ssh
-cp -r /build-secrets/ssh-keys/* $home/.ssh/
+cp -r /mnt/build-secrets/ssh-keys/* $home/.ssh/
 chmod 700 $home/.ssh
 
 mkdir -p $home/.abuild
-cp /build-secrets/abuild/* $home/.abuild
+cp /mnt/build-secrets/abuild/* $home/.abuild
 
 eof
 
