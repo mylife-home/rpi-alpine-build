@@ -14,11 +14,10 @@ MyLife Home alpine build on raspberry pi
   - https://wiki.alpinelinux.org/wiki/Writing_Init_Scripts
   - https://wiki.gentoo.org/wiki/OpenRC/supervise-daemon#Services_which_won.27t_run_under_a_supervisor
   - https://github.com/OpenRC/openrc/blob/master/supervise-daemon-guide.md
+- alpine repository
+  - https://www.erianna.com/creating-a-alpine-linux-repository/
 - nrpe ?
 
 ## TODO
 
-- recuperer une release de packager sur npm repository, de la version ecrite dans les APKBUILD
 - produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
-
-Docker -v secrets folder
