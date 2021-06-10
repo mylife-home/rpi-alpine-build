@@ -18,7 +18,7 @@ MyLife Home alpine build on raspberry pi
 
 ## TODO
 
-- recupérer la version du package.json du core/modules ?
+- recuperer une release de packager, de la version ecrite dans les APKBUILD
 - produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
 
 Docker -v secrets folder
