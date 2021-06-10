@@ -21,3 +21,5 @@ MyLife Home alpine build on raspberry pi
 ## TODO
 
 - produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
+   -- ou --
+- host un nginx, avec un volume persistent, et ajouter de quoi upload dessus les resultats de build (+ index automatique ?)
