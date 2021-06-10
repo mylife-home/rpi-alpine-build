@@ -26,10 +26,6 @@ mkdir ~/build # this folder will serve as output subdirectory
 mkdir ~/build/mylife-home-core
 cd ~/build/mylife-home-core
 cp -r /mnt/packages/mylife-home-core/* .
-cp /mnt/dist/prod/core/bin.js ./
-cp /mnt/dist/prod/core/bin.js.map ./
-cp /mnt/dist/prod/core/lib.js ./
-cp /mnt/dist/prod/core/lib.js.map ./
 
 abuild -F checksum
 abuild -F -r

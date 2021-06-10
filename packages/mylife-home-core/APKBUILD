@@ -8,7 +8,7 @@ arch="noarch"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="nodejs"
-source="bin.js bin.js.map lib.js lib.js.map config.json store.json mylife-home-core.initd"
+source="https://registry.npmjs.org/mylife-home-core/-/mylife-home-core-${pkgver}.tgz config.json store.json mylife-home-core.initd"
 
 check() {
   # TODO: add small check
@@ -21,11 +21,11 @@ package() {
 
   install -m755 -D "$srcdir"/mylife-home-core.initd "$pkgdir"/etc/init.d/mylife-home-core
 
-  cp -p "$srcdir/bin.js" "$pkgdir/usr/mylife-home/bin.js"
-  cp -p "$srcdir/bin.js.map" "$pkgdir/usr/mylife-home/bin.js.map"
-  cp -p "$srcdir/lib.js" "$pkgdir/usr/mylife-home/lib.js"
-  cp -p "$srcdir/lib.js.map" "$pkgdir/usr/mylife-home/lib.js.map"
+  cd "$srcdir"
+  tar -zxvf mylife-home-core-${pkgver}.tgz
+  rm "$srcdir"/package/package.json
+  cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home
 
-  cp -p "$srcdir/config.json" "$pkgdir/usr/mylife-home/config.json"
-  cp -p "$srcdir/store.json" "$pkgdir/usr/mylife-home/store.json"
+  install -m644 -D "$srcdir"/config.json "$pkgdir"/usr/mylife-home/config.json
+  install -m644 -D "$srcdir"/store.json "$pkgdir"/usr/mylife-home/store.json
 }
