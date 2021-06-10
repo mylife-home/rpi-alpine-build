@@ -37,5 +37,4 @@ cd ~
 chown -R $host_uid:$host_gid /mnt/build/*
 
 # debug
-
-/bin/sh
+# /bin/sh
