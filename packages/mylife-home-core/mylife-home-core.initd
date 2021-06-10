@@ -1,7 +1,8 @@
 #!/sbin/openrc-run
 
 name=mylife-home-core
-command="node /usr/mylife-home/bin.js"
+command=/usr/bin/node
+command_args=/usr/mylife-home/bin.js
 supervisor="supervise-daemon"
 
 depend() {
