@@ -18,6 +18,16 @@ MyLife Home alpine build on raspberry pi
   - https://www.erianna.com/creating-a-alpine-linux-repository/
 - nrpe ?
 
+## Install
+
+### From Windows
+
+ - https://github.com/garrym/raspberry-pi-alpine
+   - dans le gestionnaire de disque, supprimer les partitions existantes
+   - creer une partition FAT32 de 4096MB, label: "rpi-alpine"
+   - copier/coller le contenu du .tar.gz
+ - sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
+
 ## TODO
 
 - produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
