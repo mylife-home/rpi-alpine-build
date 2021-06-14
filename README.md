@@ -17,6 +17,7 @@ MyLife Home alpine build on raspberry pi
 - alpine repository
   - https://www.erianna.com/creating-a-alpine-linux-repository/
 - nrpe ?
+- ancien setup: https://github.com/vincent-tr/rpi-image-builder/
 
 ## Install
 
@@ -33,3 +34,13 @@ MyLife Home alpine build on raspberry pi
 - produire une image docker qui contient un web statique avec le repo APK ? comment gerer le fait d'avoir plusieurs versions de packages ?
    -- ou --
 - host un nginx, avec un volume persistent, et ajouter de quoi upload dessus les resultats de build (+ index automatique ?)
+
+- integrer les drivers:
+  - https://github.com/mylife-home/mylife-home-drivers-pwm
+  - https://github.com/mylife-home/mylife-home-drivers-ac
+
+
+=> TODO pour livrer core avec irc-bridge dessus:
+ - build module irc-bridge
+ - creer taches de deploy pour essayer de creer l'image
+ - tester
