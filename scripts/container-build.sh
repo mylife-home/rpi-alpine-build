@@ -21,16 +21,10 @@ mkdir -p ~/packages
 ln -s /mnt/build ~/packages/build
 mkdir ~/build # this folder will serve as output subdirectory
 
-# build core
+# build packages
 
-mkdir ~/build/mylife-home-core
-cd ~/build/mylife-home-core
-cp -r /mnt/packages/mylife-home-core/* .
-
-abuild -F checksum
-abuild -F -r
-
-cd ~
+/mnt/scripts/build-package.sh mylife-home-core
+/mnt/scripts/build-package.sh mylife-home-core-plugins-irc
 
 # cleanup
 

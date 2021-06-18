@@ -1,0 +1,23 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core-plugins-irc
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="MyLife Home Core Plugins Irc"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="mylife-home-core"
+source="https://registry.npmjs.org/mylife-home-core-plugins-irc/-/mylife-home-core-plugins-irc-${pkgver}.tgz"
+
+check() {
+  # TODO: add small check
+  /bin/true
+}
+
+package() {
+  cd "$srcdir"
+  tar -zxvf /mylife-home-core-plugins-irc-${pkgver}.tgz
+  rm "$srcdir"/package/package.json
+  cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home
+}
