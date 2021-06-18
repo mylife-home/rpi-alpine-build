@@ -7,6 +7,6 @@ cd ~/build/$package
 cp -r /mnt/packages/$package/* .
 
 abuild -F checksum
-abuild -F -r
+abuild -F -r -d
 
 cd ~

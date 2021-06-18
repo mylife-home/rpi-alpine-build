@@ -16,8 +16,10 @@ check() {
 }
 
 package() {
+  install -dm755 "$pkgdir/usr/mylife-home/plugins"
+
   cd "$srcdir"
-  tar -zxvf /mylife-home-core-plugins-irc-${pkgver}.tgz
+  tar -zxvf mylife-home-core-plugins-irc-${pkgver}.tgz
   rm "$srcdir"/package/package.json
-  cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home
+  cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home/plugins
 }
