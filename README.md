@@ -48,6 +48,5 @@ MyLife Home alpine build on raspberry pi
 
 
 => TODO pour livrer core avec irc-bridge dessus:
- - build module irc-bridge
  - creer taches de deploy pour essayer de creer l'image
  - tester
