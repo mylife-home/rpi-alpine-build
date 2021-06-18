@@ -19,6 +19,13 @@ MyLife Home alpine build on raspberry pi
 - nrpe ?
 - ancien setup: https://github.com/vincent-tr/rpi-image-builder/
 
+## Rpi config initialization
+ - install base image on SD Card
+ - boot (with monitor and keyboard)
+ - `setup-aline`
+ - at the end, retrieve the apkovl file, it is setup base
+
+
 ## Install
 
 ### From Windows
@@ -27,7 +34,7 @@ MyLife Home alpine build on raspberry pi
    - dans le gestionnaire de disque, supprimer les partitions existantes
    - creer une partition FAT32 de 4096MB, label: "rpi-alpine"
    - copier/coller le contenu du .tar.gz
- - sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
+ - alt: sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
 
 ## TODO
 
