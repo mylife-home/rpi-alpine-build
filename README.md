@@ -22,9 +22,33 @@ MyLife Home alpine build on raspberry pi
 ## Rpi config initialization
  - install base image on SD Card
  - boot (with monitor and keyboard)
- - `setup-aline`
- - at the end, retrieve the apkovl file, it is setup base
-
+ - Login root
+ - setup-alpine
+    ```
+    Keyboard layout: none (default)
+    Hostname: todo-hostname
+    Init interface : eth0 (default)
+    IP adress: dhcp (default)
+    Init interface: done (pas wlan0)
+    Manuel net config: no (default)
+    New pass for root: ###
+    Timezone: Europe/Paris
+    Proxy URL : none (default)
+    Ntp client : chrony (default)
+    Mirror URL: 1 (default)
+    Ssh server: openssh (default)
+    No available disk. Umount: no (default)
+    Enter where to store config : mmcblk0p1 (default)
+    Enter apk cache directory: /media/mmcblk0p1/cache (default)
+    ```
+ - vi /etc/ssh/sshd_config
+    ```
+    PermitRootLogin yes
+    ```
+ - service sshd restart
+ - lbu commit
+ - reboot # (to be sure all is ok)
+ - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
 
 ## Install
 
