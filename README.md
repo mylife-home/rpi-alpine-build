@@ -41,12 +41,29 @@ MyLife Home alpine build on raspberry pi
     Enter where to store config : mmcblk0p1 (default)
     Enter apk cache directory: /media/mmcblk0p1/cache (default)
     ```
- - vi /etc/ssh/sshd_config
-    ```
-    PermitRootLogin yes
-    ```
- - service sshd restart
- - lbu commit
+ - config sshd
+  - vi /etc/ssh/sshd_config
+      ```
+      PermitRootLogin yes
+      ```
+  - service sshd restart
+  - lbu commit
+ - add authorized keys:
+  - cd /root
+  - mkdir .ssh
+  - chmod 700 .ssh
+  - cd .ssh
+  - cat > authorized_keys
+  - <add pub key>
+  - ctrl+D
+  - chmod 600 authorized_keys
+  - lbu add /root/.ssh/authorized_keys
+  - lbu commit
+ - add custom repository
+  - cat > /etc/apk/keys/mylife-home-builder.rsa.pub
+  - <copy studio-data/build-secrets/abuild/mylife-home-builder.rsa.pub>
+  - ctrl+D
+  - echo "http://mylife-home-packages.apps.mti-team2.dyndns.org/alpine" >> /etc/apk/repositories
  - reboot # (to be sure all is ok)
  - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
 
