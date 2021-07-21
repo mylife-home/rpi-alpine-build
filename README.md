@@ -20,10 +20,10 @@ MyLife Home alpine build on raspberry pi
 - ancien setup: https://github.com/vincent-tr/rpi-image-builder/
 
 ## Rpi config initialization
- - install base image on SD Card
- - boot (with monitor and keyboard)
- - Login root
- - setup-alpine
+- install base image on SD Card
+- boot (with monitor and keyboard)
+- Login root
+- setup-alpine
     ```
     Keyboard layout: none (default)
     Hostname: todo-hostname
@@ -41,14 +41,14 @@ MyLife Home alpine build on raspberry pi
     Enter where to store config : mmcblk0p1 (default)
     Enter apk cache directory: /media/mmcblk0p1/cache (default)
     ```
- - config sshd
+- config sshd
   - vi /etc/ssh/sshd_config
       ```
       PermitRootLogin yes
       ```
   - service sshd restart
   - lbu commit
- - add authorized keys:
+- add authorized keys:
   - cd /root
   - mkdir .ssh
   - chmod 700 .ssh
@@ -59,13 +59,13 @@ MyLife Home alpine build on raspberry pi
   - chmod 600 authorized_keys
   - lbu add /root/.ssh/authorized_keys
   - lbu commit
- - add custom repository
+- add custom repository
   - cat > /etc/apk/keys/mylife-home-builder.rsa.pub
   - <copy studio-data/build-secrets/abuild/mylife-home-builder.rsa.pub>
   - ctrl+D
   - echo "http://mylife-home-packages.apps.mti-team2.dyndns.org/alpine" >> /etc/apk/repositories
- - reboot # (to be sure all is ok)
- - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
+- reboot # (to be sure all is ok)
+- at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
 
 ## Install
 
