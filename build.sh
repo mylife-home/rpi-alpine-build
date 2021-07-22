@@ -12,7 +12,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credent
 # aarch64
 #################################
 
-# export LINUX_PLATFORM=aarch64 => unmae -m in container
+# export LINUX_PLATFORM=aarch64 => uname -m in container
 export ALPINE_IMAGE_PLATFORM=arm64v8
 export DOCKER_PLATFORM=arm64
 
