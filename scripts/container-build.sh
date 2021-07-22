@@ -16,6 +16,7 @@ chmod 700 ~/.ssh
 
 mkdir -p ~/.abuild
 cp /mnt/build-secrets/abuild/* ~/.abuild
+cp ~/.abuild/*.rsa.pub /etc/apk/keys
 
 mkdir -p ~/packages
 ln -s /mnt/build ~/packages/build
