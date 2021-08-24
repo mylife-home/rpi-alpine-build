@@ -66,6 +66,11 @@ MyLife Home alpine build on raspberry pi
   - echo "http://mylife-home-packages.apps.mti-team2.dyndns.org/alpine" >> /etc/apk/repositories
 - reboot # (to be sure all is ok)
 - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
+- locally:
+  - mkdir root
+  - put the `apkovl.tar.gz` file in root
+  - tar -zcvf base-config.tar.gz root
+  - upload `base-config.tar.gz` to studio files
 
 ## Install
 
