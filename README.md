@@ -92,13 +92,7 @@ scripts/build-packages.sh
 
 ## TODO
 
-- produire une image docker qui contient un web statique avec le repo APK
-repo config dans /etc/apk/reositories:
- - http://dl-cdn.alpinelinux.org/alpine/v3.13/main
- - http://mylife-home-packages.apps.mti-team2.dyndns.org/alpine
-fichier de package a DL (que la derniere version sur le repo)
- - http://dl-cdn.alpinelinux.org/alpine/v3.13/main/aarch64/APKINDEX.tar.gz
- - http://dl-cdn.alpinelinux.org/alpine/v3.13/main/aarch64/bash-5.1.0-r0.apk
+- kube image pour vincenttr/mylife-home-packages-repository:1.0.0 avec URL http://mylife-home-packages.apps.mti-team2.dyndns.org/
 
 - integrer les drivers:
   - https://github.com/mylife-home/mylife-home-drivers-pwm
