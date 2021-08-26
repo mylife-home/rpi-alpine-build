@@ -18,4 +18,5 @@ export DOCKER_PLATFORM=arm64
 
 SECRETS_PATH=../mylife-home-studio-data-dev/build-secrets
 
-docker run --platform linux/$DOCKER_PLATFORM --rm -ti -v $(realpath ./build):/mnt/build -v $(realpath ./scripts):/mnt/scripts:ro -v $(realpath ./packages):/mnt/packages:ro -v $(realpath $SECRETS_PATH):/mnt/build-secrets:ro $ALPINE_IMAGE_PLATFORM/alpine:$ALPINE_VERSION /mnt/scripts/container-build.sh $(id -u) $(id -g)
+mkdir -p $(realpath ./build) # to be created with right user
+docker run --platform linux/$DOCKER_PLATFORM --rm -ti -v $(realpath ./build):/mnt/build -v $(realpath ./scripts):/mnt/scripts:ro -v $(realpath ./packages):/mnt/packages:ro -v $(realpath $SECRETS_PATH):/mnt/build-secrets:ro $ALPINE_IMAGE_PLATFORM/alpine:$ALPINE_VERSION /mnt/scripts/container-build-packages.sh $(id -u) $(id -g)
