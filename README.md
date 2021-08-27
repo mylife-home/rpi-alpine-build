@@ -92,8 +92,6 @@ scripts/build-packages.sh
 
 ## TODO
 
-- kube image pour vincenttr/mylife-home-packages-repository:1.0.0 avec URL http://mylife-home-packages.apps.mti-team2.dyndns.org/
-
 - integrer les drivers:
   - https://github.com/mylife-home/mylife-home-drivers-pwm
   - https://github.com/mylife-home/mylife-home-drivers-ac
