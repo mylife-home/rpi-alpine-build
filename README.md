@@ -100,3 +100,8 @@ scripts/build-packages.sh
 => TODO pour livrer core avec irc-bridge dessus:
  - creer taches de deploy pour essayer de creer l'image
  - tester
+
+=> mosquitto:
+vi /etc/mosquitto/mosquitto.conf
+listener 1883 0.0.0.0
+allow_anonymous true
