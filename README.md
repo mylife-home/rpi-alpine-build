@@ -107,7 +107,7 @@ listener 1883 0.0.0.0
 allow_anonymous true
 *******/
 
-=> renommer mylife-home-[studio/deploy] en *-old (sur home-resources + DNS + portal)
+OK => renommer mylife-home-[studio/deploy] en *-old (sur home-resources + DNS + portal)
 => livrer le nouveau studio sur kube
 
 => faire fonctionner rpi-home-main avec sa config
