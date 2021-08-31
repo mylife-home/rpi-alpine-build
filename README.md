@@ -76,7 +76,7 @@ scripts/build-packages.sh
 - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
 - locally:
   - mkdir root
-  - put the `apkovl.tar.gz` file in root
+  - put the `apkovl.tar.gz` file in root (note: archive content files/dirs must be owned by root/wheel (uid 0, gid 0))
   - tar -zcvf base-config.tar.gz root
   - upload `base-config.tar.gz` to studio files
 
@@ -96,12 +96,32 @@ scripts/build-packages.sh
   - https://github.com/mylife-home/mylife-home-drivers-pwm
   - https://github.com/mylife-home/mylife-home-drivers-ac
 
-
 => TODO pour livrer core avec irc-bridge dessus:
  - creer taches de deploy pour essayer de creer l'image
  - tester
 
-=> mosquitto:
+/******
+=> mosquitto config-import:
 vi /etc/mosquitto/mosquitto.conf
 listener 1883 0.0.0.0
 allow_anonymous true
+*******/
+
+=> renommer mylife-home-[studio/deploy] en *-old (sur home-resources + DNS + portal)
+=> livrer le nouveau studio sur kube
+
+=> faire fonctionner rpi-home-main avec sa config
+
+=> livrer UI sur un nom temp et le faire fonctionner
+
+=> renommer mylife-home-ui en *-old (sur home-resources + DNS + kube)
+=> puis relivrer en reprenant l'ancien keycloak, et en mettant une route de l'ingress (ou gatekeeper) pour rediriger vers l'ancienne app genre home-ui.mylife.ovh/v1
+
+## Notes
+
+### home-resources content
+ - http://home-resources/static/ (/var/www/static) => inspircd config + lirc config
+ - http://home-resources/alpine-packages/ (var/www/alpine-packages) => alpine packages
+ - vhosts configs vers studio, deploy, ui
+ - /home/mylife-home : mylife-home-studio, mylife-home-resources, mylife-home-ui
+ - /home/alpine-build : abuild keys, ssh keys, mylife-home-deploy + data
