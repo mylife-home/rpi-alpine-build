@@ -21,7 +21,7 @@ function build_platform() {
 
 function build_docker() {
   cp ./docker/packages/* ./build
-  docker build -t vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION ./build
+  docker build --pull -t vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION ./build
   docker push vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION
 }
 
