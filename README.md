@@ -96,10 +96,6 @@ scripts/build-packages.sh
   - https://github.com/mylife-home/mylife-home-drivers-pwm
   - https://github.com/mylife-home/mylife-home-drivers-ac
 
-=> TODO pour livrer core avec irc-bridge dessus:
- - creer taches de deploy pour essayer de creer l'image
- - tester
-
 /******
 => mosquitto config-import:
 vi /etc/mosquitto/mosquitto.conf
