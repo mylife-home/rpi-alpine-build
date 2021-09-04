@@ -108,6 +108,7 @@ OK => livrer le nouveau studio sur kube
 OK => init mylife-home-studio-data
 
 => faire fonctionner rpi-home-main avec sa config
+   => image-core-components -> faire une tache image-import-file pour importer les config ? dans "/media/mmcblk0p1/mylife-home" ?
 
 => livrer UI sur un nom temp et le faire fonctionner
 
