@@ -3,10 +3,11 @@
     "console": false
   },
   "bus": {
-    "serverUrl": "tcp://localhost"
+    "serverUrl": "tcp://rpi-home-main.mti-team2.dyndns.org"
   },
   "store": {
-    "type": "fs",
-    "path": "store.json"
+    "type": "mounted-fs",
+    "path": "/media/mmcblk0p1/mylife-home/store.json",
+    "mountPoint": "/media/mmcblk0p1"
   }
 }
