@@ -4,7 +4,10 @@ name=mylife-home-core
 command=/usr/bin/node
 command_args=bin.js
 directory=/usr/mylife-home
-supervisor="supervise-daemon"
+
+supervisor=supervise-daemon
+# respawn_delay=1 # default = immediately
+respawn_max=0
 
 depend() {
   need net
