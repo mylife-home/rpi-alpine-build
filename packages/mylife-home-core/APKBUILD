@@ -2,13 +2,13 @@
 
 pkgname=mylife-home-core
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MyLife Home Core"
 arch="noarch"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="nodejs"
-source="https://registry.npmjs.org/mylife-home-core/-/mylife-home-core-${pkgver}.tgz config.json store.json mylife-home-core.initd"
+source="https://registry.npmjs.org/mylife-home-core/-/mylife-home-core-${pkgver}.tgz config.json mylife-home-core.initd"
 
 check() {
   # TODO: add small check
