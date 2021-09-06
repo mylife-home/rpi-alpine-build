@@ -96,15 +96,6 @@ scripts/build-packages.sh
   - https://github.com/mylife-home/mylife-home-drivers-pwm
   - https://github.com/mylife-home/mylife-home-drivers-ac
 
-OK => renommer mylife-home-[studio/deploy] en *-old (sur home-resources + DNS + portal)
-OK => livrer le nouveau studio sur kube
-OK => init mylife-home-studio-data
-OK => faire fonctionner rpi-home-main avec sa config
-OK => livrer UI sur un nom temp et le faire fonctionner
-
-=> renommer mylife-home-ui en *-old (sur home-resources + DNS + kube)
-=> puis relivrer en reprenant l'ancien keycloak, et en mettant une route de l'ingress (ou gatekeeper) pour rediriger vers l'ancienne app genre home-ui.mylife.ovh/v1
-
 ## Notes
 
 ### home-resources content
@@ -113,3 +104,8 @@ OK => livrer UI sur un nom temp et le faire fonctionner
  - vhosts configs vers studio, deploy, ui
  - /home/mylife-home : mylife-home-studio, mylife-home-resources, mylife-home-ui
  - /home/alpine-build : abuild keys, ssh keys, mylife-home-deploy + data
+
+### v1 cleanup
+ - home-resources
+ - dns *-old.apps.mti-team2.dyndns.org and home.mti-team2.dyndns.org
+ - portal *old
