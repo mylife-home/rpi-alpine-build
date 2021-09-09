@@ -1,0 +1,25 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core-plugins-logic-timers
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="MyLife Home Core Plugins Logic Timers"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="mylife-home-core"
+source="https://registry.npmjs.org/mylife-home-core-plugins-logic-timers/-/mylife-home-core-plugins-logic-timers-${pkgver}.tgz"
+
+check() {
+  # TODO: add small check
+  /bin/true
+}
+
+package() {
+  install -dm755 "$pkgdir/usr/mylife-home/plugins"
+
+  cd "$srcdir"
+  tar -zxvf mylife-home-core-plugins-logic-timers-${pkgver}.tgz
+  rm "$srcdir"/package/package.json
+  cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home/plugins
+}

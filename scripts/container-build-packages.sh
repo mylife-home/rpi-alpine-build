@@ -43,6 +43,11 @@ setup_abuild
 
 build_package mylife-home-core
 build_package mylife-home-core-plugins-irc
+build_package mylife-home-core-plugins-logic-base
+build_package mylife-home-core-plugins-logic-colors
+build_package mylife-home-core-plugins-logic-selectors
+build_package mylife-home-core-plugins-logic-timers
+build_package mylife-home-core-plugins-ui-base
 
 finalize
 
