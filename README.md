@@ -5,9 +5,22 @@ MyLife Home alpine build on raspberry pi
 
 ### Build packages (all arch)
 
+- Will use package images from npm (if needed bump versions in `APKBUILD`s)
+- Bump `DOCKER_PACKAGES_REPOSITORY_VERSION`
 ```
 scripts/build-packages.sh
 ```
+- Docker image for package repository will be published.
+- Bump k8s deployment image version (`packages-repository`)
+
+### Build kernel modules (all arch)
+
+- modules repository will be cloned from master branch
+```
+scripts/build-kernel.sh
+```
+- Output will be produced in `build/base-kernel-{version}-{arch}.tar.gz`
+- Copy it into studio files
 
 ## Docs
 
