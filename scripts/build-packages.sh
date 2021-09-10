@@ -5,6 +5,14 @@ ALPINE_VERSION=3.13.5
 SECRETS_PATH=$(realpath ../mylife-home-studio-data-dev/build-secrets)
 BUILD_PATH=$(realpath ./build)
 
+function main() {
+  init
+  build_platform arm64v8 arm64 # aarch64 (rpi2 V1.2, rpi3, rpi4)
+  build_platform arm32v6 arm # armhf (rpi1, rpi0, rpi0w)
+  build_platform arm32v7 arm # armv7l (rpi2 V1.1)
+  build_docker
+}
+
 function init() {
   docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credential yes
 
@@ -25,8 +33,4 @@ function build_docker() {
   docker push vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION
 }
 
-init
-build_platform arm64v8 arm64 # aarch64 (rpi2 V1.2, rpi3, rpi4)
-build_platform arm32v6 arm # armhf (rpi1, rpi0, rpi0w)
-build_platform arm32v7 arm # armv7l (rpi2 V1.1)
-build_docker
+main

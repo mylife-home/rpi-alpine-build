@@ -3,6 +3,23 @@
 host_uid=$1
 host_gid=$2
 
+function main() {
+  setup_abuild
+
+  build_package mylife-home-core
+  build_package mylife-home-core-plugins-irc
+  build_package mylife-home-core-plugins-logic-base
+  build_package mylife-home-core-plugins-logic-colors
+  build_package mylife-home-core-plugins-logic-selectors
+  build_package mylife-home-core-plugins-logic-timers
+  build_package mylife-home-core-plugins-ui-base
+
+  finalize
+
+  # debug
+  # /bin/sh
+}
+
 function setup_abuild() {
   apk add --no-cache sudo git alpine-sdk nodejs
 
@@ -39,17 +56,4 @@ function build_package() {
   cd ~
 }
 
-setup_abuild
-
-build_package mylife-home-core
-build_package mylife-home-core-plugins-irc
-build_package mylife-home-core-plugins-logic-base
-build_package mylife-home-core-plugins-logic-colors
-build_package mylife-home-core-plugins-logic-selectors
-build_package mylife-home-core-plugins-logic-timers
-build_package mylife-home-core-plugins-ui-base
-
-finalize
-
-# debug
-# /bin/sh
+main
