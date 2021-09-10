@@ -3,6 +3,7 @@ set -e
 
 host_uid=$1
 host_gid=$2
+arch=$3
 
 function main() {
 
