@@ -11,7 +11,7 @@ function main() {
   mkdir -p $BUILD_PATH/packages # to be created with right user
   rm -rf $BUILD_PATH/packages/*
 
-  docker_run_platforms /mnt/scripts/container-build-packages.sh $(id -u) $(id -g)
+  docker_run_platforms container-build-packages.sh
 
   # Build docker image
   cp ./docker/packages/* ./build

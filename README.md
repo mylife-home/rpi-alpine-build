@@ -19,7 +19,7 @@ scripts/build-packages.sh
 ```
 scripts/build-kernel.sh
 ```
-- Output will be produced in `build/base-kernel-{version}-{arch}.tar.gz`
+- Output will be produced in `build/kernel/base-kernel-{version}-{arch}.tar.gz`
 - Copy it into studio files
 
 ## Docs
