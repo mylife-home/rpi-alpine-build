@@ -13,9 +13,9 @@ function main() {
   docker_run_platforms build_platform
 
   # Build docker image
-  # cp ./docker/packages/* ./build
-  # docker build --pull -t vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION ./build
-  # docker push vincenttr/mylife-home-packages-repository:$REPOSITORY_VERSION
+  cp ./docker/packages/* ./build
+  docker build --pull -t vincenttr/mylife-home-packages-repository:$DOCKER_PACKAGES_REPOSITORY_VERSION ./build
+  docker push vincenttr/mylife-home-packages-repository:$DOCKER_PACKAGES_REPOSITORY_VERSION
 }
 
 function build_platform() {
