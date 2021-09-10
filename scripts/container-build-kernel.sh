@@ -6,6 +6,8 @@ host_gid=$2
 
 function main() {
 
+  echo $(uname -a)
+
   finalize
 
   # debug
@@ -15,3 +17,5 @@ function main() {
 function finalize() {
   chown -R $host_uid:$host_gid /mnt/build/*
 }
+
+main
