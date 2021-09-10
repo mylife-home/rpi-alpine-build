@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 host_uid=$1
 host_gid=$2
