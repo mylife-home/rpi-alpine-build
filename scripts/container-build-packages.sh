@@ -15,6 +15,7 @@ function main() {
   build_package mylife-home-core-plugins-logic-timers
   build_package mylife-home-core-plugins-ui-base
   build_package mylife-home-core-plugins-driver-absoluta
+  build_package mylife-home-core-plugins-driver-broadlink
 
   finalize
 
