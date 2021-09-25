@@ -1,8 +1,8 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core
-pkgver=1.0.6
-pkgrel=1
+pkgver=1.0.7
+pkgrel=0
 pkgdesc="MyLife Home Core"
 arch="noarch"
 url="http://apps.mti-team2.dyndns.org/"
