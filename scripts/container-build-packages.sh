@@ -16,6 +16,7 @@ function main() {
   build_package mylife-home-core-plugins-ui-base
   build_package mylife-home-core-plugins-driver-absoluta
   build_package mylife-home-core-plugins-driver-broadlink
+  build_package mylife-home-core-plugins-driver-mpd
 
   finalize
 
