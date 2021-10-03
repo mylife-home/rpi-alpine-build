@@ -18,6 +18,7 @@ function main() {
   build_package mylife-home-core-plugins-driver-tahoma
   build_package mylife-home-core-plugins-driver-broadlink
   build_package mylife-home-core-plugins-driver-mpd
+  build_package mylife-home-core-plugins-driver-arduino-irc
 
   finalize
 
