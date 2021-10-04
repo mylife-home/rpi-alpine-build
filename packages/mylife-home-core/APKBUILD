@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=0
 pkgdesc="MyLife Home Core"
 arch="noarch"
