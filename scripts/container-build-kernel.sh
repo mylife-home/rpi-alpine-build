@@ -20,13 +20,13 @@ arch=$3
 function main() {
   # we need that to pick last kernel
   apk update
-  apk add make gcc fakeroot squashfs-tools git
+  apk --no-cache add make gcc fakeroot squashfs-tools git tar
 
   # package description : "linux-rpi-dev-4.9.65-r0 description:", kernel version : "4.9.65-0"
   version=$(apk info linux-rpi-dev | grep description | grep -oE "\d+\.\d+\.\d+\-r\d+" | sed 's/r//g')
 
   working_directory=/tmp/kernel-update
-  output_dir=/tmp
+  output_dir=/mnt/build/kernel
 
   extra_dir=$working_directory/extra-modules
   kernel_dir=$working_directory/kernel
@@ -49,6 +49,7 @@ function build_modules() {
   echo "BUILDING MODULES"
 
   local working_root_fs=$working_directory/root-fs
+  local sources_dir=$working_directory/sources
 
   mkdir -p $working_root_fs
   fakeroot apk -p $working_root_fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
@@ -56,57 +57,37 @@ function build_modules() {
   mkdir -p $extra_dir/rpi
   mkdir -p $extra_dir/rpi2
 
-  build_modules_mylife_home_drivers_ac $working_root_fs
-  build_modules_mylife_home_drivers_pwm $working_root_fs
+  git clone https://github.com/mylife-home/mylife-home-kmodules $sources_dir
 
+  # AC
+  local ac_sources_dir=$sources_dir/ac
+
+  /bin/sh
+
+  # rpi1
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$ac_sources_dir modules
+  cp $ac_sources_dir/*.ko $extra_dir/rpi
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$ac_sources_dir clean
+
+  # rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$ac_sources_dir modules
+  cp $ac_sources_dir/*.ko $extra_dir/rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$ac_sources_dir clean
+
+  # PWM
+  local pwm_sources_dir=$sources_dir/pwm
+  # rpi1
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$pwm_sources_dir MYLIFE_ARCH=MYLIFE_ARCH_RPI1 modules
+  cp $pwm_sources_dir/*.ko $extra_dir/rpi
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$pwm_sources_dir clean
+
+  # rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$pwm_sources_dir MYLIFE_ARCH=MYLIFE_ARCH_RPI2 modules
+  cp $pwm_sources_dir/*.ko $extra_dir/rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$pwm_sources_dir clean
+
+  rm -rf $sources_dir
   rm -rf $working_root_fs
-}
-
-function build_modules_mylife_home_drivers_ac() {
-
-  local src_dir=$working_directory/mylife-home-drivers-ac
-  local working_root_fs=$1
-
-  git clone https://github.com/mylife-home/mylife-home-drivers-ac $src_dir
-
-  # rpi1
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers modules
-  cp $src_dir/drivers/*.ko $extra_dir/rpi
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers clean
-
-  # rpi2
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers modules
-  cp $src_dir/drivers/*.ko $extra_dir/rpi2
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers clean
-
-  # cleanup
-  rm -rf $src_dir
-}
-
-function build_modules_mylife_home_drivers_pwm() {
-  if [ $arch != "armhf" ]
-  then
-    echo "Unsupported arch $arch; skipping pwm driver build."
-    return 0
-  fi
-
-  local src_dir=$working_directory/mylife-home-drivers-pwm
-  local working_root_fs=$1
-
-  git clone https://github.com/mylife-home/mylife-home-drivers-pwm $src_dir
-
-  # rpi1
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers MYLIFE_ARCH=MYLIFE_ARCH_RPI1 modules
-  cp $src_dir/drivers/*.ko $extra_dir/rpi
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers clean
-
-  # rpi2
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers MYLIFE_ARCH=MYLIFE_ARCH_RPI2 modules
-  cp $src_dir/drivers/*.ko $extra_dir/rpi2
-  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers clean
-
-  # cleanup
-  rm -rf $src_dir
 }
 
 function setup_kernel() {
@@ -162,8 +143,6 @@ function build_modloop_by_flavor() {
 function package() {
   echo "PACKAGING"
 
-  apk add --no-cache --virtual .build-tools tar
-
   local root_fs=$working_directory/root
 
   mkdir -p $root_fs/boot
@@ -181,12 +160,10 @@ function package() {
   tar --owner=root --group=root -C $working_directory -zcvf $output_dir/base-kernel-$version.tar.gz root
 
   rm -rf $working_directory
-  apk del .build-tools
 }
 
-
 function finalize() {
-  chown -R $host_uid:$host_gid /mnt/build/*
+  chown -R $host_uid:$host_gid /mnt/build/kernel
 }
 
 main
