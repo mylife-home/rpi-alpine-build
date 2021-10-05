@@ -11,7 +11,8 @@ function main() {
   mkdir -p $BUILD_PATH/kernel # to be created with right user
   rm -rf $BUILD_PATH/kernel/*
 
-  docker_run_platforms container-build-kernel.sh
+  # Note: for now we only build for armhf
+  docker_run_platform_armhf container-build-kernel.sh
 }
 
 main

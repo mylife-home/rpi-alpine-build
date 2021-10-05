@@ -15,12 +15,12 @@ arch=$3
 # linux-rpi2-dev => armhf, armv7
 # linux-rpi4-dev => armv7, aarch64
 
-function main() {
-  echo $(uname -a) $arch
-  exit 0
+# Note: for now we only build for armhf
 
+function main() {
   # we need that to pick last kernel
   apk update
+  apk add make gcc fakeroot squashfs-tools git
 
   # package description : "linux-rpi-dev-4.9.65-r0 description:", kernel version : "4.9.65-0"
   version=$(apk info linux-rpi-dev | grep description | grep -oE "\d+\.\d+\.\d+\-r\d+" | sed 's/r//g')
@@ -50,8 +50,6 @@ function build_modules() {
 
   local working_root_fs=$working_directory/root-fs
 
-  apk add --no-cache --virtual .build-tools make gcc fakeroot
-
   mkdir -p $working_root_fs
   fakeroot apk -p $working_root_fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 
@@ -62,7 +60,6 @@ function build_modules() {
   build_modules_mylife_home_drivers_pwm $working_root_fs
 
   rm -rf $working_root_fs
-  apk del .build-tools
 }
 
 function build_modules_mylife_home_drivers_ac() {
@@ -115,14 +112,10 @@ function build_modules_mylife_home_drivers_pwm() {
 function setup_kernel() {
   echo "SETUPING KERNEL"
 
-  apk add --no-cache --virtual .build-tools fakeroot
-
   update-kernel -a armhf -f rpi2 $kernel_dir
   update-kernel -a armhf -f rpi $kernel_dir
 
   chown -R $(id -u -n):$(id -g -n) $kernel_dir
-
-  apk del .build-tools
 }
 
 function build_modloop() {
@@ -130,13 +123,10 @@ function build_modloop() {
 
   local working_root_fs=$working_directory/root-fs
 
-  apk add --no-cache --virtual .build-tools squashfs-tools
-
   build_modloop_by_flavor rpi
   build_modloop_by_flavor rpi2
 
   rm -rf $extra_dir
-  apk del .build-tools
 }
 
 function build_modloop_by_flavor() {
