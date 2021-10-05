@@ -24,7 +24,7 @@ function docker_build_platform() {
   
   docker run \
     --platform linux/$DOCKER_PLATFORM --rm -ti \
-    -v $BUILD_PATH/packages:/mnt/build \
+    -v $BUILD_PATH:/mnt/build \
     -v $(realpath ./scripts):/mnt/scripts:ro \
     -v $(realpath ./packages):/mnt/packages:ro \
     -v $(realpath $SECRETS_PATH):/mnt/build-secrets:ro \

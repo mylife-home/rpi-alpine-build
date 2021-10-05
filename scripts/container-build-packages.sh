@@ -41,12 +41,12 @@ function setup_abuild() {
   cp ~/.abuild/*.rsa.pub /etc/apk/keys
 
   mkdir -p ~/packages
-  ln -s /mnt/build ~/packages/build
+  ln -s /mnt/build/packages ~/packages/build
   mkdir ~/build # this folder will serve as output subdirectory
 }
 
 function finalize() {
-  chown -R $host_uid:$host_gid /mnt/build/*
+  chown -R $host_uid:$host_gid /mnt/build/packages
 }
 
 function build_package() {
