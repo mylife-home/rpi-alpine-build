@@ -62,6 +62,7 @@ function build_modules() {
   # AC
   local ac_sources_dir=$sources_dir/ac
 
+  # debug
   /bin/sh
 
   # rpi1
