@@ -25,7 +25,7 @@ function main() {
   # package description : "linux-rpi-dev-4.9.65-r0 description:", kernel version : "4.9.65-0"
   version=$(apk info linux-rpi-dev | grep description | grep -oE "\d+\.\d+\.\d+\-r\d+" | sed 's/r//g')
 
-  working_directory=/tmp/kernel-update
+  working_directory=/build/kernel-update
   output_dir=/mnt/build/kernel
 
   extra_dir=$working_directory/extra-modules
