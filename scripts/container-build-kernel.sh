@@ -20,7 +20,7 @@ arch=$3
 function main() {
   # we need that to pick last kernel
   apk update
-  apk --no-cache add make gcc fakeroot squashfs-tools git tar
+  apk --no-cache add make gcc fakeroot squashfs-tools alpine-conf git tar
 
   # package description : "linux-rpi-dev-4.9.65-r0 description:", kernel version : "4.9.65-0"
   version=$(apk info linux-rpi-dev | grep description | grep -oE "\d+\.\d+\.\d+\-r\d+" | sed 's/r//g')
@@ -62,9 +62,6 @@ function build_modules() {
   # AC
   local ac_sources_dir=$sources_dir/ac
 
-  # debug
-  # /bin/sh
-
   # rpi1
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$ac_sources_dir modules
   cp $ac_sources_dir/*.ko $extra_dir/rpi
@@ -96,8 +93,6 @@ function setup_kernel() {
 
   update-kernel -a armhf -f rpi2 $kernel_dir
   update-kernel -a armhf -f rpi $kernel_dir
-
-  chown -R $(id -u -n):$(id -g -n) $kernel_dir
 }
 
 function build_modloop() {
