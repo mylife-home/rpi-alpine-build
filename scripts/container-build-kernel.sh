@@ -116,10 +116,12 @@ function build_modloop_by_flavor() {
   mkdir -p $working_directory/new-$modloop_name
 
   # pick existing modules
-  mkdir -p $working_directory/$modloop_name
-  mount $kernel_dir/$modloop_name $working_directory/$modloop_name -t squashfs -o loop
-  cp -r $working_directory/$modloop_name/* $working_directory/new-$modloop_name
-  umount $working_directory/$modloop_name
+  # Note: cannot mount inside docker, extract all instead
+  # mkdir -p $working_directory/$modloop_name
+  # mount $kernel_dir/$modloop_name $working_directory/$modloop_name -t squashfs -o loop
+  # cp -r $working_directory/$modloop_name/* $working_directory/new-$modloop_name
+  # umount $working_directory/$modloop_name
+  unsquashfs -f -d $working_directory/new-$modloop_name $kernel_dir/$modloop_name
   rmdir $working_directory/$modloop_name
   rm -f $kernel_dir/$modloop_name
 
