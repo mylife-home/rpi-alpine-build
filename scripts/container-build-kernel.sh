@@ -63,7 +63,7 @@ function build_modules() {
   local ac_sources_dir=$sources_dir/ac
 
   # debug
-  /bin/sh
+  # /bin/sh
 
   # rpi1
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$ac_sources_dir modules
