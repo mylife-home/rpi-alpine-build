@@ -121,8 +121,8 @@ function build_modloop_by_flavor() {
   # mount $kernel_dir/$modloop_name $working_directory/$modloop_name -t squashfs -o loop
   # cp -r $working_directory/$modloop_name/* $working_directory/new-$modloop_name
   # umount $working_directory/$modloop_name
+  # rmdir $working_directory/$modloop_name
   unsquashfs -f -d $working_directory/new-$modloop_name $kernel_dir/$modloop_name
-  rmdir $working_directory/$modloop_name
   rm -f $kernel_dir/$modloop_name
 
   # pick new modules
