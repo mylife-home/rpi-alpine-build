@@ -155,7 +155,7 @@ function package() {
       $root_fs/boot
   done
 
-  tar --owner=root --group=root -C $working_directory -zcvf $output_dir/base-kernel-$version.tar.gz root
+  tar --owner=root --group=root -C $working_directory -zcvf $output_dir/base-kernel-$version-$arch.tar.gz root
 
   rm -rf $working_directory
 }
