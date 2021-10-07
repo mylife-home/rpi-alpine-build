@@ -13,7 +13,7 @@ scripts/build-packages.sh
 - Docker image for package repository will be published.
 - Bump k8s deployment image version (`packages-repository`)
 
-### Build kernel modules (all arch)
+### Build kernel modules (armhf only for now)
 
 - modules repository will be cloned from master branch
 ```
