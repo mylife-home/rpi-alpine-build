@@ -99,7 +99,7 @@ scripts/build-kernel.sh
 
  - https://github.com/garrym/raspberry-pi-alpine
    - dans le gestionnaire de disque, supprimer les partitions existantes
-   - creer une partition FAT32 de 4096MB, label: "rpi-alpine"
+   - creer une partition FAT32 de taille max, label: "rpi-alpine"
    - copier/coller le contenu du .tar.gz
  - alt: sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
 
