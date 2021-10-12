@@ -105,6 +105,4 @@ scripts/build-kernel.sh
 
 ## TODO
 
-- integrer les drivers:
-  - https://github.com/mylife-home/mylife-home-drivers-pwm
-  - https://github.com/mylife-home/mylife-home-drivers-ac
+- pourquoi root/dtb a la racine dans l'image de base, et dans des sous-dossiers dans l'update de kernel
