@@ -8,17 +8,19 @@ function main() {
   setup_abuild
 
   build_package mylife-home-core
+  build_package mylife-home-core-plugins-driver-absoluta
+  build_package mylife-home-core-plugins-driver-arduino-irc
+  build_package mylife-home-core-plugins-driver-broadlink
+  build_package mylife-home-core-plugins-driver-lirc
+  build_package mylife-home-core-plugins-driver-mpd
+  build_package mylife-home-core-plugins-driver-sensors
+  build_package mylife-home-core-plugins-driver-tahoma
   build_package mylife-home-core-plugins-irc
   build_package mylife-home-core-plugins-logic-base
   build_package mylife-home-core-plugins-logic-colors
   build_package mylife-home-core-plugins-logic-selectors
   build_package mylife-home-core-plugins-logic-timers
   build_package mylife-home-core-plugins-ui-base
-  build_package mylife-home-core-plugins-driver-absoluta
-  build_package mylife-home-core-plugins-driver-tahoma
-  build_package mylife-home-core-plugins-driver-broadlink
-  build_package mylife-home-core-plugins-driver-mpd
-  build_package mylife-home-core-plugins-driver-arduino-irc
 
   finalize
 
