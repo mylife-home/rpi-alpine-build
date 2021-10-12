@@ -84,6 +84,8 @@ function build_modules() {
   cp $pwm_sources_dir/*.ko $extra_dir/rpi2
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$pwm_sources_dir clean
 
+  mv  $sources_dir/conf/* $output_dir
+
   rm -rf $sources_dir
   rm -rf $working_root_fs
 }
@@ -161,7 +163,7 @@ function package() {
 }
 
 function finalize() {
-  chown -R $host_uid:$host_gid /mnt/build/kernel
+  chown -R $host_uid:$host_gid $output_dir
 }
 
 main
