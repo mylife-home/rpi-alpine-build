@@ -106,4 +106,3 @@ scripts/build-kernel.sh
 ## TODO
 
 - pourquoi root/dtb a la racine dans l'image de base, et dans des sous-dossiers dans l'update de kernel
-- resize `mylife-home-main` fat partition to max size
