@@ -97,11 +97,26 @@ scripts/build-kernel.sh
 
 ### From Windows
 
- - https://github.com/garrym/raspberry-pi-alpine
-   - dans le gestionnaire de disque, supprimer les partitions existantes
-   - creer une partition FAT32 de taille max, label: "rpi-alpine"
-   - copier/coller le contenu du .tar.gz
- - alt: sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
+- https://github.com/garrym/raspberry-pi-alpine
+  - dans le gestionnaire de disque, supprimer les partitions existantes
+  - creer une partition FAT32 de taille max, label: "rpi-alpine"
+  - copier/coller le contenu du .tar.gz
+- alt: sous windows il faut formatter la SD Card avec Rufus (sinon ca boot, mais le layout de /dev/mmblck*** est faux)
+
+### Recreate wrong partition online
+
+- apk add cfdisk dosfstools
+- umount /.modloop
+- umount /media/mmcblk0 (ou /media/mmcblk0p1, depend dans la mauvaise partition)
+- cfdisk
+  - supprimer l'existant
+  - creer table 'dos'
+  - creer partition (max size)
+  - changer type en c (FAT32 LBA)
+  - write 'yes'
+- mkdosfs -F32 /dev/mmcblk0p1
+- mount /dev/mmcblk0p1 /media/mmcblk0p1
+- redeployer image alpine
 
 ## TODO
 
