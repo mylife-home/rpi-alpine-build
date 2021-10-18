@@ -1,4 +1,5 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+# based on https://git.alpinelinux.org/aports/tree/community/lirc/APKBUILD
 
 pkgname=lirc
 pkgver=0.10.1
