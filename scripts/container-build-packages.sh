@@ -5,6 +5,7 @@ host_uid=$1
 host_gid=$2
 
 function main() {
+  apk update
   setup_abuild
 
   build_package mylife-home-core
@@ -62,12 +63,12 @@ function build_package() {
 
   abuild -F checksum
 
-  if "$with_deps"; then
+  if [ "$with_deps" = "true" ]; then
     abuild -F -r
   else
     abuild -F -r -d
   fi
-  
+
   cd ~
 }
 
