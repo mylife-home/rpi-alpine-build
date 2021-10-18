@@ -21,7 +21,7 @@ function main() {
   build_package mylife-home-core-plugins-logic-selectors
   build_package mylife-home-core-plugins-logic-timers
   build_package mylife-home-core-plugins-ui-base
-  build_package lirc
+  build_package lirc true
 
   finalize
 
@@ -54,13 +54,18 @@ function finalize() {
 
 function build_package() {
   local package=$1
+  local with_deps=$2
 
   mkdir ~/build/$package
   cd ~/build/$package
   cp -r /mnt/packages/$package/* .
 
   abuild -F checksum
-  abuild -F -r -d
+
+  if "$with_deps"; then
+    abuild -F -r
+  else
+    abuild -F -r -d
 
   cd ~
 }
