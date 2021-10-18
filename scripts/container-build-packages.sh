@@ -66,7 +66,8 @@ function build_package() {
     abuild -F -r
   else
     abuild -F -r -d
-
+  fi
+  
   cd ~
 }
 
