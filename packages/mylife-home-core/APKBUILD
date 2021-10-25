@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=0
 pkgdesc="MyLife Home Core"
 arch="noarch"
@@ -25,7 +25,8 @@ package() {
 
   cd "$srcdir"
   tar -zxvf mylife-home-core-${pkgver}.tgz
-  rm "$srcdir"/package/package.json
+  # need to keep it to have native modules properly resolved
+  # rm "$srcdir"/package/package.json
   cp -pr "$srcdir"/package/* "$pkgdir"/usr/mylife-home
 
   install -m644 -D "$srcdir"/config.json "$pkgdir"/etc/mylife-home/config.json
