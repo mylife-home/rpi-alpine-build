@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-plugins-driver-sysfs
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=0
 pkgdesc="MyLife Home Core Plugins Driver sysfs"
 arch="all"
