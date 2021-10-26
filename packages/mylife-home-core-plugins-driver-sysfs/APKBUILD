@@ -29,5 +29,5 @@ package() {
   mkdir "$srcdir"/native
   cd "$srcdir"/native
   npm i epoll
-  cp -pr "$srcdir"/native/node_modules/epoll/native/Release/epoll.node "$pkgdir"/usr/mylife-home/native
+  cp -pr "$srcdir"/native/node_modules/epoll/build/Release/epoll.node "$pkgdir"/usr/mylife-home/native
 }
