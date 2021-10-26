@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-plugins-driver-sysfs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="MyLife Home Core Plugins Driver sysfs"
 arch="all"
@@ -18,7 +18,7 @@ check() {
 
 package() {
   install -dm755 "$pkgdir/usr/mylife-home/plugins"
-  install -dm755 "$pkgdir/usr/mylife-home/build"
+  install -dm755 "$pkgdir/usr/mylife-home/native"
 
   cd "$srcdir"
   tar -zxvf mylife-home-core-plugins-driver-sysfs-${pkgver}.tgz
@@ -29,5 +29,5 @@ package() {
   mkdir "$srcdir"/native
   cd "$srcdir"/native
   npm i epoll
-  cp -pr "$srcdir"/native/node_modules/epoll/build/Release/epoll.node "$pkgdir"/usr/mylife-home/build
+  cp -pr "$srcdir"/native/node_modules/epoll/native/Release/epoll.node "$pkgdir"/usr/mylife-home/native
 }
