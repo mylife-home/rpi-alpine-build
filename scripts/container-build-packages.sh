@@ -31,7 +31,8 @@ function main() {
 }
 
 function setup_abuild() {
-  apk add --no-cache sudo git alpine-sdk nodejs
+  # add deps to build node native modules
+  apk add --no-cache sudo git alpine-sdk nodejs npm python3
 
   mkdir -p /var/cache/distfiles
   chmod a+w /var/cache/distfiles
