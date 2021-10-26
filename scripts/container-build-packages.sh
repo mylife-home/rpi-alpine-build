@@ -15,6 +15,7 @@ function main() {
   build_package mylife-home-core-plugins-driver-lirc
   build_package mylife-home-core-plugins-driver-mpd
   build_package mylife-home-core-plugins-driver-sensors
+  build_package mylife-home-core-plugins-driver-sysfs
   build_package mylife-home-core-plugins-driver-tahoma
   build_package mylife-home-core-plugins-irc
   build_package mylife-home-core-plugins-logic-base
