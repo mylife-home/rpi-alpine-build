@@ -71,6 +71,7 @@ function build_package() {
 
   if wget -P ~/packages/build/$arch $CURRENT_REPO/$arch/$apk; then
     echo "used CURRENT_REPO cached $package"
+    abuild -F index
     cd ~
     return
   fi
