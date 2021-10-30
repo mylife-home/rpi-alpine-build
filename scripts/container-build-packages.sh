@@ -63,6 +63,18 @@ function build_package() {
   cd ~/build/$package
   cp -r /mnt/packages/$package/* .
 
+  # TODO: deal with multiple subpackages
+  local arch=$(abuild -A)
+  local apk=$(abuild -F listpkg)
+
+  mkdir -p ~/packages/build/$arch
+
+  if wget -P ~/packages/build/$arch $CURRENT_REPO/$arch/$apk; then
+    echo "used CURRENT_REPO cached $package"
+    cd ~
+    return
+  fi
+
   abuild -F checksum
 
   if [ "$with_deps" = "true" ]; then
