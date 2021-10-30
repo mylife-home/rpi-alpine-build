@@ -28,6 +28,7 @@ function docker_build_platform() {
     -v $(realpath ./scripts):/mnt/scripts:ro \
     -v $(realpath ./packages):/mnt/packages:ro \
     -v $(realpath $SECRETS_PATH):/mnt/build-secrets:ro \
+    -e CURRENT_REPO=$CURRENT_REPO \
     $ALPINE_IMAGE_PLATFORM/alpine:$ALPINE_VERSION \
     "/mnt/scripts/${SCRIPT}" $(id -u) $(id -g) $ARCH
 }
