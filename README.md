@@ -8,7 +8,7 @@ MyLife Home alpine build on raspberry pi
 - Will use package images from npm (if needed bump versions in `APKBUILD`s)
 - Bump `DOCKER_PACKAGES_REPOSITORY_VERSION`
 ```
-scripts/build-packages.sh
+CURRENT_REPO=http://.../alpine scripts/build-packages.sh
 ```
 - Docker image for package repository will be published.
 - Bump k8s deployment image version (`packages-repository`)
