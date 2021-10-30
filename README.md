@@ -121,6 +121,3 @@ scripts/build-kernel.sh
 ## TODO
 
 - pourquoi root/dtb a la racine dans l'image de base, et dans des sous-dossiers dans l'update de kernel ?
-- cache
-  - rajouter env var : CURRENT_REPOSITORY=http://...
-  - pour chaque build de package, aller construire sa target et essayer de le DL du repo. si c'est OK, pas de build, sinon build comment actuellement
