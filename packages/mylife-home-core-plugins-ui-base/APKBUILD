@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-plugins-ui-base
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=0
 pkgdesc="MyLife Home Core Plugins Ui Base"
 arch="noarch"
