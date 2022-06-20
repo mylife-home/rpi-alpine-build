@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-plugins-logic-base
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=0
 pkgdesc="MyLife Home Core Plugins Logic Base"
 arch="noarch"
