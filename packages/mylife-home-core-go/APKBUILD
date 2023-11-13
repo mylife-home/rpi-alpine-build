@@ -4,11 +4,18 @@ pkgname=mylife-home-core-go
 pkgver=1.0.4
 pkgrel=0
 pkgdesc="MyLife Home Core Golang version"
-arch="all"
+goversion="1.21.4"
+arch="aarch64"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
-makedepends="go"
-source="$pkgname-$pkgver.tar.gz::https://github.com/mylife-home/mylife-home-core-go/archive/refs/tags/v$pkgver.tar.gz https://registry.npmjs.org/mylife-home-core/-/mylife-home-core-${pkgver}.tgz config.yaml mylife-home-core.initd"
+depends="ca-certificates"
+source="
+  $pkgname-$pkgver.tar.gz::https://github.com/mylife-home/mylife-home-core-go/archive/refs/tags/v$pkgver.tar.gz
+  https://go.dev/dl/go$goversion.linux-arm64.tar.gz
+  config.yaml
+  mylife-home-core.initd
+"
+
 
 check() {
   # TODO: add small check
@@ -16,16 +23,31 @@ check() {
 }
 
 build() {
-  CGO_ENABLED=0 go build -o "$builddir"/mylife-home-core "$srcdir"/mylife-home-core/main.go
+  export PATH=$PATH:"$srcdir"/go/bin
+
+  cd "$builddir"
+
+  go generate mylife-home-core-plugins/driver-absoluta/main.go
+  go generate mylife-home-core-plugins/driver-tahoma/main.go
+  go generate mylife-home-core-plugins/logic-base/main.go
+  go generate mylife-home-core-plugins/logic-clim/main.go
+  go generate mylife-home-core-plugins/logic-colors/main.go
+  go generate mylife-home-core-plugins/logic-selectors/main.go
+  go generate mylife-home-core-plugins/logic-timers/main.go
+  go generate mylife-home-core-plugins/ui-base/main.go
+
+  CGO_ENABLED=0 go build -o "$builddir"/mylife-home-core.bin mylife-home-core/main.go
 }
 
 package() {
   install -dm755 "$pkgdir/etc/mylife-home"
   install -dm755 "$pkgdir/var/log/mylife-home"
+  install -dm755 "$pkgdir/usr/bin"
 
   install -m755 -D "$srcdir"/mylife-home-core.initd "$pkgdir"/etc/init.d/mylife-home-core
-
-  cp -pr "$builddir"/mylife-home-core "$pkgdir"/usr/bin/mylife-home-core
-
   install -m644 -D "$srcdir"/config.yaml "$pkgdir"/etc/mylife-home/config.yaml
+
+  /bin/sh
+
+  install -m755 -D "$builddir"/mylife-home-core.bin "$pkgdir"/usr/bin/mylife-home-core
 }
