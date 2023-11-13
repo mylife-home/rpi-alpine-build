@@ -8,6 +8,7 @@ function main() {
   apk update
   setup_abuild
 
+  build_package mylife-home-core-go
   build_package mylife-home-core
   build_package mylife-home-core-plugins-driver-absoluta
   build_package mylife-home-core-plugins-driver-broadlink
