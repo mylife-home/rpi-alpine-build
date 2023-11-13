@@ -46,8 +46,5 @@ package() {
 
   install -m755 -D "$srcdir"/mylife-home-core.initd "$pkgdir"/etc/init.d/mylife-home-core
   install -m644 -D "$srcdir"/config.yaml "$pkgdir"/etc/mylife-home/config.yaml
-
-  /bin/sh
-
   install -m755 -D "$builddir"/mylife-home-core.bin "$pkgdir"/usr/bin/mylife-home-core
 }
