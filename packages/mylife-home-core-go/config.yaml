@@ -1,0 +1,8 @@
+bus:
+  serverUrl: tcp://your-should-override-this:1883
+store:
+  type: mounted-fs
+  path: /media/mmcblk0p1/mylife-home/store.json
+  mountPoint: /media/mmcblk0p1
+manager:
+  supportsBindings: false
