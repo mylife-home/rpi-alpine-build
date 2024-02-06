@@ -3,6 +3,12 @@ MyLife Home alpine build on raspberry pi
 
 ## Usage
 
+### Setup
+
+```
+pacman -S qemu-user-binfmt
+```
+
 ### Build packages (all arch)
 
 - Will use package images from npm (if needed bump versions in `APKBUILD`s)
