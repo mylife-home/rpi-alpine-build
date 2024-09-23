@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-go
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="MyLife Home Core Golang version"
 goversion="1.22.3"
