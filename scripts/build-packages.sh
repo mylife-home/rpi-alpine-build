@@ -15,7 +15,7 @@ function main() {
 
   # Build docker image
   cp ./docker/packages/* ./build
-  docker build --pull -t vincenttr/mylife-home-packages-repository:$DOCKER_PACKAGES_REPOSITORY_VERSION vincenttr/mylife-home-packages-repository:latest ./build
+  docker build --pull -t vincenttr/mylife-home-packages-repository:$DOCKER_PACKAGES_REPOSITORY_VERSION -t vincenttr/mylife-home-packages-repository:latest ./build
   docker push vincenttr/mylife-home-packages-repository:$DOCKER_PACKAGES_REPOSITORY_VERSION
   docker push vincenttr/mylife-home-packages-repository:latest
 }
