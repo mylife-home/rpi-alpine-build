@@ -1,10 +1,10 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
 pkgname=mylife-home-core-go
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="MyLife Home Core Golang version"
-goversion="1.21.4"
+goversion="1.22.3"
 arch="aarch64"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
