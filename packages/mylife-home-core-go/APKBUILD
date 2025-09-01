@@ -25,20 +25,8 @@ check() {
 build() {
   export PATH=$PATH:"$srcdir"/go/bin
 
-  cd "$builddir"
-
-  go generate mylife-home-core-plugins/driver-absoluta/main.go
-  go generate mylife-home-core-plugins/driver-klf200/main.go
-  go generate mylife-home-core-plugins/driver-notifications/main.go
-  go generate mylife-home-core-plugins/driver-tahoma/main.go
-  go generate mylife-home-core-plugins/logic-base/main.go
-  go generate mylife-home-core-plugins/logic-clim/main.go
-  go generate mylife-home-core-plugins/logic-colors/main.go
-  go generate mylife-home-core-plugins/logic-selectors/main.go
-  go generate mylife-home-core-plugins/logic-timers/main.go
-  go generate mylife-home-core-plugins/ui-base/main.go
-
-  CGO_ENABLED=0 go build -o "$builddir"/mylife-home-core.bin mylife-home-core/main.go
+  cd "$builddir"/core
+  make build OUTPUT_BINARY="$builddir"/mylife-home-core.bin
 }
 
 package() {
