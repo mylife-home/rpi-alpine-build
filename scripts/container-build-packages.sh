@@ -9,21 +9,6 @@ function main() {
   setup_abuild
 
   build_package mylife-home-core-go
-  build_package mylife-home-core
-  build_package mylife-home-core-plugins-driver-absoluta
-  build_package mylife-home-core-plugins-driver-broadlink
-  build_package mylife-home-core-plugins-driver-lirc
-  build_package mylife-home-core-plugins-driver-mpd
-  build_package mylife-home-core-plugins-driver-sensors
-  build_package mylife-home-core-plugins-driver-sysfs
-  build_package mylife-home-core-plugins-driver-tahoma
-  build_package mylife-home-core-plugins-logic-base
-  build_package mylife-home-core-plugins-logic-clim
-  build_package mylife-home-core-plugins-logic-colors
-  build_package mylife-home-core-plugins-logic-selectors
-  build_package mylife-home-core-plugins-logic-timers
-  build_package mylife-home-core-plugins-ui-base
-  build_package lirc true
 
   finalize
 
@@ -33,7 +18,7 @@ function main() {
 
 function setup_abuild() {
   # add deps to build node native modules
-  apk add --no-cache sudo git alpine-sdk nodejs npm python3
+  apk add --no-cache sudo git alpine-sdk
 
   mkdir -p /var/cache/distfiles
   chmod a+w /var/cache/distfiles
@@ -57,7 +42,6 @@ function finalize() {
 
 function build_package() {
   local package=$1
-  local with_deps=$2
 
   mkdir ~/build/$package
   cd ~/build/$package
@@ -78,11 +62,7 @@ function build_package() {
 
   abuild -F checksum
 
-  if [ "$with_deps" = "true" ]; then
-    abuild -F -r
-  else
-    abuild -F -r -d
-  fi
+  abuild -F -r
 
   cd ~
 }
