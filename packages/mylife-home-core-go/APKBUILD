@@ -10,7 +10,7 @@ url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="ca-certificates"
 source="
-  $pkgname-$pkgver.tar.gz::https://github.com/mylife-home/mylife-home-core-go/archive/refs/tags/v$pkgver.tar.gz
+  $pkgname-$pkgver.tar.gz::https://github.com/mylife-home/mylife-home-main-go/archive/refs/tags/v$pkgver.tar.gz
   https://go.dev/dl/go$goversion.linux-arm64.tar.gz
   config.yaml
   mylife-home-core.initd
