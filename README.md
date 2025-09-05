@@ -91,6 +91,18 @@ scripts/build-kernel.sh
   - <copy studio-data/build-secrets/abuild/mylife-home-builder.rsa.pub>
   - ctrl+D
   - echo "http://mylife-home-packages.apps.mti-team2.dyndns.org/alpine" >> /etc/apk/repositories
+- config chrony
+  - vi /etc/chrony/chrony.conf
+    ```
+    # default config
+
+    pool pool.ntp.org iburst
+    initstepslew 10 pool.ntp.org
+    makestep 10 -1 # VTR added
+    driftfile /var/lib/chrony/chrony.drift
+    rtcsync
+    cmdport 0
+    ```
 - reboot # (to be sure all is ok)
 - at the end, retrieve the `/media/mmcblk0p1/todo-hostname.apkovl.tar.gz` file, it is config base
 - locally:
